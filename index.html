@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #container {
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      #container img {
+        height: 90%;
+      }
+      #sec {
+        height: 40%;
+        width: 0.3%;
+        top: 10%;
+        left: 49.5%;
+        /* display: none; */
+        position: absolute;
+        border-radius: 23px;
+        background-color: rgb(65, 63, 63);
+        transform-origin: bottom;
+      }
+      #min {
+        height: 30%;
+        width: 0.6%;
+        top: 20%;
+        border-radius: 23px;
+        left: 49.39%;
+        position: absolute;
+        /* display: none; */
+        transform-origin: bottom;
+        background-color: rgb(65, 63, 63);
+      }
+      #hr {
+        height: 20%;
+        width: 1%;
+        border-radius: 23px;
+        left: 49.1%;
+        /* display: none; */
+        top: 30%;
+        position: absolute;
+        transform-origin: bottom;
+        background-color: rgb(65, 63, 63);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img src="clock.png" />
+      <div id="sec"></div>
+      <div id="min"></div>
+      <div id="hr"></div>
+    </div>
+
+    <script>
+      let sec = document.getElementById("sec");
+      let min = document.getElementById("min");
+      let hr = document.getElementById("hr");
+      setInterval(() => {
+        let D = new Date();
+        secdeg = 6 * D.getSeconds();
+        mindeg = (60 * D.getMinutes() + D.getSeconds()) * 0.1;
+        hrdeg = ((D.getHours()*3600) + (60 * D.getMinutes() + D.getSeconds())) * (1/120);
+        sec.style.transform = `rotate(${secdeg}deg)`;
+        min.style.transform = `rotate(${mindeg}deg)`;
+        hr.style.transform = `rotate(${hrdeg}deg)`;
+        console.log(D)
+      }, 1000);
+    </script>
+  </body>
+</html>
